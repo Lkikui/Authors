@@ -11,8 +11,8 @@ export class HttpService {
   }
 
   getAuthorById(_id){
-    console.log("service requesting author from database and sending to component")
-    console.log(_id);
+    // console.log("from service, getAuthorById():")
+    // console.log(_id);
     return this._http.get(`/authors/${_id}`);
   }
 
@@ -27,11 +27,19 @@ export class HttpService {
   }
 
   editAuthor(author, _id){
-    console.log("editing task recieved by service:");
+    console.log("editing author recieved by service:");
     console.log(author);
     console.log("id recieved by service:");
     console.log(_id);
     return this._http.put(`/authors/${_id}`, author);
   }
+
+  addQuote(newQuote, _id){
+    console.log(newQuote);
+    console.log(_id);
+    return this._http.put(`/newQuote/${_id}`, newQuote);
+  }
+
+
 
 }

@@ -12,13 +12,17 @@ import { HomeComponent } from './home/home.component';
 
 import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
+import { QuotesComponent } from './quotes/quotes.component';
+import { WriteComponent } from './write/write.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewComponent,
     HomeComponent,
-    EditComponent
+    EditComponent,
+    QuotesComponent,
+    WriteComponent
   ],
   imports: [
     BrowserModule,

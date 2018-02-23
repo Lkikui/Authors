@@ -17,17 +17,19 @@ export class NewComponent implements OnInit {
     private _router: Router
   ) {}
 
-  ngOnInit() {
-    this.newAuthor = {name: ""}
+  ngOnInit(){
+    this.newAuthor = {name: "", quotes: {quote: "", votes: ""} };
   }
 
   onSubmit(){
     let observable = this._httpService.addAuthor(this.newAuthor);
+    console.log("submitting through component");
     observable.subscribe(data => {
+      console.log("onSubmit() data:");
       console.log(data);
       this.newAuthor = data;
+      this.goHome();
     })
-    this.goHome();
   }
 
   goHome() {

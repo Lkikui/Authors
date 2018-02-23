@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit {
   getAuthorsFromService(){
     console.log("hello from home component");
     let observable = this._httpService.getAuthors();
-    observable.subscribe(data => {
+    observable.subscribe(response => {
+      let data = response as any;
       this.authors = data;
       console.log(data);
     })
