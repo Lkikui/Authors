@@ -1,0 +1,50 @@
+.error {
+    color: red;
+    margin-top: 65px;
+    text-align: center;
+}
+
+.title {
+    margin-left: 346px;
+}
+
+.quote {
+    margin-left: 10px;
+    width: 157px;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    height: 25px;
+}
+
+a {
+    display: block;
+    text-align: center;
+}
+
+form {
+    border: 1px solid darkgray;
+    margin: 0 auto;
+    padding: 30px;
+    width: 225px;
+    background-color: #2C3844;
+    color: white;
+}
+
+.buttons {
+    display: block;
+    margin-top: 25px;
+}
+
+.button {
+    width: 100px;
+    background-color: #66BBFF;
+    color: white;
+    font-family: sans-serif;
+    font-size: 10pt;
+    border: none;
+    border-radius: 4px;
+    height: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 5px;
+}

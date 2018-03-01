@@ -1,11 +1,12 @@
 <a [routerLink]="['/home']">Home</a>
 
-<p>Edit this author</p>
+<p class = "title">Edit this author</p>
 
  <form (submit)="onEdit(author, author._id)">
-    <p>{{author | json}}</p>
     <label for="authorName">Name:</label>
-    <input type="text" name="authorName" [(ngModel)]="author.name">
-    <input type="submit" value="Submit">
- </form>
- <button [routerLink]="['/home']">Cancel</button>
+    <input class = "name" type="text" name="authorName" [(ngModel)]="author.name">
+    <div class = "buttons">
+        <input class = "button" type="submit" value="Submit">
+        <button class = "button" [routerLink]="['/home']">Cancel</button>
+    </div>
+</form>

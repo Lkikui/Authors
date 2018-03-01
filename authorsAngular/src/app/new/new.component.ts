@@ -10,30 +10,42 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class NewComponent implements OnInit {
   newAuthor: any;
   authors = [];
-
+  err = "";
+  
   constructor(
     private _httpService: HttpService,
     private _route: ActivatedRoute,
     private _router: Router
   ) {}
-
+  
   ngOnInit(){
     this.newAuthor = {name: "", quotes: {quote: "", votes: ""} };
   }
-
+  
   onSubmit(){
     let observable = this._httpService.addAuthor(this.newAuthor);
     console.log("submitting through component");
-    observable.subscribe(data => {
-      console.log("onSubmit() data:");
-      console.log(data);
-      this.newAuthor = data;
-      this.goHome();
+    observable.subscribe(response => {
+      if (response == "Author validation failed: name: Author name required") {
+        this.err = "Author name must have at least 3 characters";
+        this.refresh();
+      } else if (response == "Author validation failed: name: Author name must have at least 3 characters") {
+        this.err = "Author name must have at least 3 characters";
+        this.refresh();
+      } else {
+        console.log(response);
+        this.newAuthor = response;
+        this.goHome();
+      }
     })
   }
 
   goHome() {
     this._router.navigate(['/home']);
+  }
+
+  refresh() {
+    this._router.navigate(['/new']);
   }
 
 }

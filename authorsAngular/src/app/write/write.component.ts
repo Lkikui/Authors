@@ -12,6 +12,7 @@ export class WriteComponent implements OnInit {
   newQuote: any;
   _id: any;
   quotes = [];
+  err = "";
 
   constructor(
     private _httpService: HttpService,
@@ -36,18 +37,33 @@ export class WriteComponent implements OnInit {
 
   onSubmitQuote(author, _id){
     let observable = this._httpService.addQuote(this.newQuote, _id);
-    observable.subscribe(data => {
-      console.log(data);
-      this.newQuote = data;
-      this.quotes.push(this.newQuote);
-      this.goBack();
+    console.log("submitting through component");
+    observable.subscribe(response => {
+      console.log(response);
+      
+      // this.newQuote = response;
+      // this.quotes.push(this.newQuote);
+      // this.goBack();
+      // if (response == "Author validation failed: name: Author name required") {
+      //   this.err = "Author name must have at least 3 characters";
+      //   this.refresh();
+      // } else if (response == "Author validation failed: name: Author name must have at least 3 characters") {
+      //   this.err = "Author name must have at least 3 characters";
+      //   this.refresh();
+      // } else {
+      //   console.log(response);
+      //   this.newAuthor = response;
+      //   this.goHome();
+      // }
     })
   }
 
-  
-
   goBack() {
     this._router.navigate([`/quotes/${this._id}`]);
+  }
+
+  refresh() {
+    this._router.navigate([`/write/${this._id}`]);
   }
 
 }

@@ -34,8 +34,12 @@ export class QuotesComponent implements OnInit {
   }
 
   onQuoteUpvote(id, _id, votes){
-    votes = votes + 1;
-    console.log(votes);
+    votes++;
+    // console.log(id, _id, votes);
+    let observable = this._httpService.upvoteQuote(id, this._id, votes);
+    observable.subscribe(data => {
+      console.log(`Upvoted`)
+    })
   }
 
   // onQuoteDelete(id, _id){

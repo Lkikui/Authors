@@ -1,14 +1,14 @@
 <a [routerLink]="['/home']">Home</a>
 
+<p class = "error">{{err}}</p>
 
+<p class = "title">Add a new quotable author:</p>
 
 <form (submit)="onSubmit()">
-  
-  <title>Add a new quotable author:</title>
-
   <label for="newAuthor.name">Name:</label>
-  <input type="text" name="newAuthor.name" [(ngModel)]="newAuthor.name" placeholder="Leslie Jones">
-  <input type="submit" value="Submit">
+  <input type="text" name="newAuthor.name" class = "name" [(ngModel)]="newAuthor.name" placeholder="Leslie Jones">
+  <div class = "buttons">
+    <input class = "button" type="submit" value="Submit">
+    <button class = "button" [routerLink]="['/home']">Cancel</button>
+  </div>
 </form>
-
-<button [routerLink]="['/home']">Cancel</button>

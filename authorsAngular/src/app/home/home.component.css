@@ -1,0 +1,43 @@
+a {
+    display: block;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid darkgrey;
+    margin: 0 auto;
+    color: white;
+}
+
+td, th {
+    border: 1px solid darkgrey;
+    padding: 5px;
+}
+
+th {
+    background-color: #202832;
+}
+
+td {
+    background-color: #2C3844;
+}
+
+p {
+    margin-left: 305px;
+    margin-top: 65px;
+}
+
+button {
+    width: 100px;
+    background-color: #66BBFF;
+    color: white;
+    font-family: sans-serif;
+    font-size: 10pt;
+    border: none;
+    border-radius: 4px;
+    height: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 5px;
+}
+

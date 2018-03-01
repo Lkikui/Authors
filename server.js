@@ -17,10 +17,18 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/authorDB');
 
 var AuthorSchema = new mongoose.Schema({
-    name: {type: String, required: true, minlength: 3},
+    name: {
+        type: String, 
+        required: [true, 'Author name required'],
+        minlength: [3, 'Author name must have at least 3 characters']
+    },
     quotes: [{
         id: {type: Number},
-        quote: {type: String, required: true, minlength: 3},
+        quote: {
+            type: String,
+            required: [true, 'Quote is required'],
+            minlength: [3, 'Quote must be at least 3 characters'],
+        }, 
         votes: {type: Number, required: false, default: 0}
     }]
 }, {timestamps: true})
@@ -57,6 +65,7 @@ app.post("/newAuthor", (req,res) => {
     })
 });
 
+//add a new quote
 app.put("/newQuote/:_id", (req,res) => {
     console.log(req.body);
     var newQuote = {id: Math.floor(Math.random() * 1000) + 1, quote: req.body.quote, votes: 0}
@@ -110,10 +119,43 @@ app.put('/authors/:id', (req, res) => {
 })
 
 //upvote quote
-app.put('/quotes/:_id', (req,res) => {
-    // Author.findOneAndUpdate({_id: req.params.id}, {$set: {quotes: {vote: req.body.}}})
+app.put('/quotes/:_id/upvote/:id', (req, res) => {
     console.log(req.body);
+    // Author.update({_id: req.params._id}, {$set: {quotes: [{votes: req.body.quotes}] } }, (err, quotes) => {
+    //     if(err){
+    //         console.log('ERROR: upvote unsuccessful');
+    //         res.json(err);
+    //     } else {
+    //         console.log('Successfully upvoted');
+    //     }
+    // })
 })
+
+//downvote quote
+app.put('/quotes/:_id/downvote/:id', (req,res) => {
+    
+    Author.update({_id: req.params._id}, {$set: {quotes: [{votes: req.body.quotes}] } }, (err, quotes) => {
+        if(err){
+            console.log('ERROR: downvote unsuccessful');
+            res.json(err);
+        } else {
+            console.log('Successfully downvoted');
+        }
+    })
+})
+
+//delete author
+// app.delete("/quotes/:_id", (req,res) => {
+//     console.log('initiating removal');
+//     Author.remove({_id: req.params.id}, (err, authors) => {
+//         if(err){
+//             console.log(err.message);
+//         } else {
+//             console.log('Successfully removed');
+//             res.json(authors);
+//         }
+//     })
+// })
 
 
 app.all("*", (req,res,next) => {

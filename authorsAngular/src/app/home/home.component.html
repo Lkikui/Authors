@@ -1,18 +1,21 @@
-<!-- <a href="/new">Add an author</a> -->
 <a [routerLink]="['/new']">Add a quotable author</a>
 
-<p>We have quotes by:</p>
+<div class = "quotes">
 
-<table>
-    <tr>
-        <th>author</th>
-        <th>actions</th>
-    </tr>
-    <tr *ngFor = "let author of authors">
-        <td>{{author.name}}</td>
-        <td>
-            <button [routerLink]="['/edit/' + author._id]">Edit</button>
-            <button [routerLink]="['/quotes/' + author._id]">View Quotes</button>
-        </td>
-    </tr>
-</table>
+    <p>We have quotes by:</p>
+
+    <table>
+        <tr>
+            <th>author</th>
+            <th>actions</th>
+        </tr>
+        <tr *ngFor = "let author of authors">
+            <td>{{author.name}}</td>
+            <td>
+                <button [routerLink]="['/edit/' + author._id]">Edit</button>
+                <button [routerLink]="['/showquotes/' + author._id]">View Quotes</button>
+            </td>
+        </tr>
+    </table>
+
+</div>

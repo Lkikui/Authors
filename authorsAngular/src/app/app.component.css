@@ -1,0 +1,9 @@
+#wrapper {
+    width: 970px;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
